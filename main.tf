@@ -39,7 +39,7 @@ resource "aws_security_group" "instance" {
 resource "aws_instance" "minecraft" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t3.micro"
-  security_groups = ["module.minecraft_label.id"]
+  security_groups = [module.minecraft_label.id]
   user_data = <<-EOF
               #!/bin/bash
               sudo apt-get update

@@ -21,7 +21,7 @@ resource "aws_security_group" "instance" {
 }
 
 resource "aws_instance" "minecraft" {
-  ami           = "	ami-0cbea92f2377277a4"
+  ami           = "ami-0cbea92f2377277a4"
   instance_type = "t3.micro"
   security_groups = ["module.minecraft_label.id"]
   user_data = <<-EOF

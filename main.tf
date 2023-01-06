@@ -6,6 +6,22 @@ module "minecraft_label" {
   enabled    = module.this.enabled
 }
 
+data "aws_ami" "ubuntu" {
+  most_recent = true
+
+  filter {
+    name   = "name"
+    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
+  }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+
+  owners = ["099720109477"] # Canonical
+}
+
 
 resource "aws_security_group" "instance" {
   name        = module.minecraft_label.id
@@ -21,7 +37,7 @@ resource "aws_security_group" "instance" {
 }
 
 resource "aws_instance" "minecraft" {
-  ami           = "ami-0cbea92f2377277a4"
+  ami           = data.aws_ami.ubuntu.id
   instance_type = "t3.micro"
   security_groups = ["module.minecraft_label.id"]
   user_data = <<-EOF
@@ -39,5 +55,9 @@ resource "aws_instance" "minecraft" {
   
   lifecycle {
     create_before_destroy = true
-  }                
+  }     
+
+  tags = {
+    Name = module.minecraft_label.id
+  }           
 }

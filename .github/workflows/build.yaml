@@ -39,4 +39,4 @@ jobs:
 
       - name: Run `packer build`
         id: build
-        run: "packer build ./minecraft.pkr.hcl"
+        run: "packer build -f ./minecraft.pkr.hcl"

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# set -e, -u, -x, -o pipefail
+set -e, -u, -x, -o pipefail
 
 sudo apt update -y
 sudo apt install curl wget unzip grep screen openssl -y

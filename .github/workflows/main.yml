@@ -1,0 +1,42 @@
+name: Build Minecraft Image
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: 'Action'
+        required: true
+        default: 'build'
+        type: choice
+        options:
+        - build
+
+env:
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Run Packer
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup `packer`
+        uses: hashicorp/setup-packer@main
+        id: setup
+        with:
+          version: "latest" 
+
+      - name: Run `packer init`
+        id: init
+        run: "packer init ./minecraft.pkr.hcl"
+
+      - name: Run `packer validate`
+        id: validate
+        run: "packer validate ./minecraft.pkr.hcl"
+
+      - name: Run `packer validate`
+        id: validate
+        run: "packer validate ./minecraft.pkr.hcl"

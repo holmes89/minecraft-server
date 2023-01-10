@@ -1,4 +1,4 @@
 variable "ami" {
   type = string
-  default = "ami-0e0796e35f39abeb1"
+  default = "ami-05415f9bcd36b679b"
 }

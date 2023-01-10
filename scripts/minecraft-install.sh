@@ -15,4 +15,4 @@ sudo wget $DOWNLOAD_URL -O /home/mcserver/minecraft_bedrock/bedrock-server.zip
 sudo unzip /home/mcserver/minecraft_bedrock/bedrock-server.zip -d /home/mcserver/minecraft_bedrock/
 sudo rm /home/mcserver/minecraft_bedrock/bedrock-server.zip
 sudo chown -R mcserver: /home/mcserver/
-# cp server.properties /home/mcserver/minecraft_bedrock/server.properties
+cp /public/server.properties /home/mcserver/minecraft_bedrock/server.properties

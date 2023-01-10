@@ -22,13 +22,13 @@ source "amazon-ebs" "minecraft" {
 build {
 
   sources = ["source.amazon-ebs.minecraft"]
-
+  provisioner "file" {
+    source      = "server.properties"
+    destination = "/public/server.properties"
+  }
   provisioner "shell" {
     script = "scripts/minecraft-install.sh"
   }
 
-  provisioner "file" {
-    source      = "server.properties"
-    destination = "/home/mcserver/minecraft_bedrock/server.properties"
-  }
+  
 }

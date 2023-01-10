@@ -37,6 +37,6 @@ jobs:
         id: validate
         run: "packer validate ./minecraft.pkr.hcl"
 
-      - name: Run `packer validate`
-        id: validate
-        run: "packer validate ./minecraft.pkr.hcl"
+      - name: Run `packer build`
+        id: build
+        run: "packer build ./minecraft.pkr.hcl"

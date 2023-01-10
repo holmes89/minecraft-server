@@ -16,6 +16,13 @@ resource "aws_security_group" "instance" {
     protocol    = "udp"
     cidr_blocks = ["0.0.0.0/0"]
   }
+    
+  ingress {
+    from_port   = 19133
+    to_port     = 19133
+    protocol    = "udp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 
 }
 

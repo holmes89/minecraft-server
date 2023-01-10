@@ -9,7 +9,7 @@ locals {
 
 source "amazon-ebs" "minecraft" {
   ami_name      = "packer-${local.app_name}"
-  instance_type = "t2.micro"
+  instance_type = "t3.micro"
   region        = "us-east-2"
   source_ami    = "${var.ami_id}"
   ssh_username  = "ubuntu"

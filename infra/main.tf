@@ -25,7 +25,7 @@ resource "aws_instance" "minecraft" {
   security_groups = [module.minecraft_label.id]
   user_data = <<-EOF
               #!/bin/bash
-              ./bedrock_server
+              ./home/mcserver/minecraft_bedrock/bedrock_server
                 EOF
   
   lifecycle {
